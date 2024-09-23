@@ -2,16 +2,17 @@ from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
+
 from alembic import context
-# imports added
-import sys 
-import os 
-# Make sure Alembic can find the models directory
+import sys
+import os
+
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from models.band import Band
-from models.concert import Concert 
-from models.venue import Venue 
+from models.concert import Concert
+from models.venue import Venue
 from utils.tools import Base
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config

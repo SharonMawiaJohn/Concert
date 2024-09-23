@@ -63,7 +63,7 @@ def add_concert(session, band_id, venue_id, date):
         return None
 
 # Object relationship and concert aggregrated method check 
-band1 = add_band(session=session, name="Hart the band", hometown="Nairobi", date="19/09/2024")
+band1 = add_band(session=session, name="Hart the band", hometown="Nairobi", date="23/09/2024")
 if band1:
     venue1 = add_venue(session=session, city="Nairobi", title="KICC")
     if venue1:
@@ -103,7 +103,7 @@ print(Band.most_performances(session=session))
 
 
 ## venues aggregrate relationship methods 
-print(venue2.concert_on(date="20/09/2024",session=session))
+print(venue2.concert_on(date="23/09/2024",session=session))
 print(venue2.most_frequent_band(session=session))
 
 session.close()

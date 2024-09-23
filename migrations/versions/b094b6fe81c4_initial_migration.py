@@ -1,8 +1,8 @@
-"""initial migration
+"""Initial migration
 
-Revision ID: 0c02d33ecc69
+Revision ID: b094b6fe81c4
 Revises: 
-Create Date: 2024-09-18 22:18:22.925902
+Create Date: 2024-09-23 14:52:44.505674
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '0c02d33ecc69'
+revision: str = 'b094b6fe81c4'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -25,7 +25,8 @@ def upgrade() -> None:
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('hometown', sa.String(), nullable=False),
     sa.Column('date', sa.String(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('concerts',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -42,7 +43,8 @@ def upgrade() -> None:
     sa.Column('title', sa.String(), nullable=True),
     sa.Column('concert_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['concert_id'], ['concerts.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('title')
     )
     # ### end Alembic commands ###
 
